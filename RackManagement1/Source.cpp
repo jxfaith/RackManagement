@@ -37,6 +37,8 @@ bool scrabble(std::string tiles, std::string targetWord) {
 }
 
 
+
+
 int main() {
 	std::string myWord;
 	std::string myTiles;
@@ -44,7 +46,7 @@ int main() {
 	std::cout << "Enter target word" << std::endl;
 	std::getline(std::cin, myWord);
 
-	std::cout << "Enter tiles" << std::endl;
+	std::cout << "Enter tiles (? for blank)" << std::endl;
 	std::getline(std::cin, myTiles);
 
 	if (scrabble(myTiles, myWord) == false) {
