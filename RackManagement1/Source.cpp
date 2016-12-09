@@ -5,23 +5,32 @@
 bool scrabble(std::string tiles, std::string targetWord) {
 	
 	// loop each letter in targetWord
-	for (int i = 0; i < targetWord.length; i++) {
+	for (int i = 0; i < targetWord.length(); i++) {
+		int tilePosition;
 
-		// if the letter matches a tile, remove the tile from the tray and continue
+		// if the letter matches a tile, set tilePosition to its location
 		if (tiles.find(targetWord[i]) != std::string::npos) {
-			int tilePosition = tiles.find(targetWord[i]);
-
-			tiles = tiles.substr(0, tilePosition - 1) + tiles.substr(tilePosition + 1, tiles.length);
+			tilePosition = tiles.find(targetWord[i]);
 		}
+
+		// else set tilePosition to the location of a blank
+		else if (tiles.find("?") != std::string::npos) {
+			tilePosition = tiles.find("?");
+		}
+
 		// else we require a tile we don't have, return false
 		else {
 			return false;
 		}
+
+		// remove the matching tile from the tray
+		tiles = tiles.substr(0, tilePosition - 1) + tiles.substr(tilePosition + 1, tiles.length());
 	}
 	
 	// if the loop completes, we have every tile we need; return true
 	return true;
 }
+
 
 int main() {
 	std::string myWord;
