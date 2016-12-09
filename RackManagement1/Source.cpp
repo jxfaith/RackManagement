@@ -24,7 +24,12 @@ bool scrabble(std::string tiles, std::string targetWord) {
 		}
 
 		// remove the matching tile from the tray
-		tiles = tiles.substr(0, tilePosition - 1) + tiles.substr(tilePosition + 1, tiles.length());
+		if (tilePosition == 0) {
+			tiles = tiles.substr(tilePosition + 1, tiles.length());
+		}
+		else {
+			tiles = tiles.substr(0, tilePosition - 1) + tiles.substr(tilePosition + 1, tiles.length());
+		}
 	}
 	
 	// if the loop completes, we have every tile we need; return true
@@ -48,4 +53,6 @@ int main() {
 	else {
 		std::cout << "You can make '" << myWord << "'" << std::endl;
 	}
+
+	return 1;
 }
